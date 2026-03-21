@@ -1,21 +1,12 @@
-# Fluxz AI Command Center — Lite
+# Fluxz AI Command Center
 
 > Your business. One screen.
 
-A personal AI dashboard for solopreneurs, coaches, and operators. Built by a trader, for operators.
+A self-hosted AI dashboard for solopreneurs and operators. Revenue, clients, calendar, and AI agents — all in one interface.
 
-![Dashboard Preview](https://berenice-crownless-jumpily.ngrok-free.dev/command-center)
+Works on Mac, Linux, and as a PWA on iPhone and iPad.
 
-## What it is
-
-A self-hosted mobile-first PWA that connects your:
-- Revenue (Stripe MRR, subscribers)
-- Students / clients
-- Calendar & bookings (Cal.com)
-- AI agents (OpenClaw)
-- Tasks & projects
-
-Built for iPad and iPhone. Installs as a native-feeling app.
+---
 
 ## Lite vs Full
 
@@ -23,36 +14,43 @@ Built for iPad and iPhone. Installs as a native-feeling app.
 |---------|-------------|-------------|
 | Dashboard UI | ✅ | ✅ |
 | Mobile PWA | ✅ | ✅ |
-| Revenue data | Demo only | Live Stripe |
-| Student management | — | ✅ |
+| Revenue (Stripe) | Demo | Live |
+| Client management | — | ✅ |
 | AI agents | — | ✅ |
 | Auto-Coach engine | — | ✅ |
 | Churn prediction | — | ✅ |
 | War Room mode | — | ✅ |
-| Nova voice | — | ✅ |
-| Cal.com integration | — | ✅ |
+| Calendar (Cal.com) | — | ✅ |
+| Push notifications | — | ✅ |
 | Settings & kill switch | — | ✅ |
-| 60-min setup session | — | ✅ |
-| 30-day support | — | ✅ |
 
-## Get full access
+## Get full access — $500
 
-**$500 one-time → private repo access + 60-min setup session**
+Pay once. Get private repo access. Set up in 30 minutes.
 
-[→ Get access](https://buy.stripe.com/28EcN47bG9bAbaPeSP8Vi0e)
+**[→ Unlock full version](https://buy.stripe.com/28EcN47bG9bAbaPeSP8Vi0e)**
 
-After payment you receive a GitHub repo invite within 24 hours.
+After payment:
+1. GitHub invite sent automatically to your username
+2. Clone the private repo
+3. Run `cp .env.example .env` and fill in your API keys
+4. Run `node server.js`
+5. Open `localhost:8080/mobile`
 
-## Built with
+No calls. No waiting. Yours immediately.
 
-- Vanilla JS + HTML (zero dependencies)
-- Node.js server
-- OpenClaw AI framework
-- Stripe, Cal.com, Discord APIs
+---
+
+## Tech stack
+
+- Vanilla JS + HTML (zero build step, zero dependencies)
+- Node.js server (~2800 lines)
+- Stripe, Cal.com, Discord, OpenAI APIs
+- OpenClaw AI framework for agents
 
 ## Follow the build
 
-[@fluxztrading](https://twitter.com/fluxztrading) on X/Twitter
+[@fluxztrading](https://x.com/fluxztrading) on X
 
 ---
 
