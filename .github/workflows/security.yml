@@ -1,0 +1,57 @@
+name: Security
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  gitleaks:
+    name: Gitleaks secret-scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  npm-audit:
+    name: npm audit (if package.json)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for package.json
+        id: pkg
+        run: |
+          if [ -f package.json ]; then echo "exists=true" >> $GITHUB_OUTPUT; else echo "exists=false" >> $GITHUB_OUTPUT; fi
+      - uses: actions/setup-node@v4
+        if: steps.pkg.outputs.exists == 'true'
+        with:
+          node-version: "20"
+      - name: npm audit (production deps, high+ only)
+        if: steps.pkg.outputs.exists == 'true'
+        run: |
+          npm install --package-lock-only --ignore-scripts || true
+          npm audit --omit=dev --audit-level=high || echo "audit found issues — review above"
+        continue-on-error: true
+
+  codeql:
+    name: CodeQL JS/TS analysis
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+      - uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript-typescript"
